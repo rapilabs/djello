@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'rapilabs-djello.herokuapp.com',
+    'shangxiao-djello.herokuapp.com',
 ]
 
 
