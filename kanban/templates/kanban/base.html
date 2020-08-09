@@ -90,10 +90,12 @@
   font-size: 14px;
   background: none;
   border: none;
+  border-radius: 3px;
   display: block;
   text-align: left;
   cursor: pointer;
   width: 100%;
+  padding: 4px;
  }
  .show-new-card:hover {
   color: #4d4d4d;
@@ -131,7 +133,7 @@
     <input type="hidden" name="column_id" value="{{ column.id }}" />
     <input type="text" name="title" class="new-card no-display" data-column-id="{{ column.id }}" />
    </form>
-   <button class="show-new-card" data-column-id="{{ column.id }}">Add a card…</button>
+   <button class="show-new-card" data-column-id="{{ column.id }}">+ Add a card…</button>
   </div>
   {% endfor %}
    
