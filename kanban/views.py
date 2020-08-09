@@ -16,6 +16,14 @@ def index(request):
     )
 
 
+def new_column(request):
+    board_id = int(request.POST.get('board_id'))
+    title = request.POST.get('title')
+    assert title
+    Column.objects.create(title=title, board_id=board_id)
+    return redirect('/')
+
+
 def new_card(request):
     column_id = int(request.POST.get("column_id"))
     title = request.POST.get("title")

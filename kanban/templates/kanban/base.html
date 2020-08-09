@@ -13,6 +13,8 @@
  }
  button {
   cursor: pointer;
+  color: white;
+  text-align: left;
  }
  body {
   font-family: 'helvetica neue', sans-serif;
@@ -24,14 +26,47 @@
  }
  .column {
   color: #4d4d4d;
-  width: 270px;
   background-color: #E2E4E6;
   border-radius: 3px;
   padding: 10px;
   margin-right: 10px;
  }
+ .show-new-column {
+  height: 40px; 
+  padding: 10px 12px;
+  background-color: #3D99CE;
+  border: none;
+  border-radius: 3px;
+ }
+ .hide-new-column {
+  color: #42526e;
+  border: none;
+  background: none;
+  font-size: x-large;
+  vertical-align: bottom;
+ }
+ .column, .show-new-column {
+  width: 270px;
+ }
  .column > h3 {
   margin: 0 0 10px 0;
+ }
+ .new-column-name {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid #0079bf;
+  border-radius: 3px;
+  color: #172b4d;
+ }
+ .new-column-button {
+  color: white;
+  background-color: #5aac44;
+  height: 32px;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 3px;
+  margin-top: 0.5em;
  }
  .card, .new-card {
   display: block;
@@ -99,6 +134,17 @@
    <button class="show-new-card" data-column-id="{{ column.id }}">Add a card…</button>
   </div>
   {% endfor %}
+   
+  <div class="column new-column no-display">
+   <form action="/new-column/" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="board_id" value="{{ board.id }}" />
+    <input type="text" name="title" class="new-column-name" required />
+    <button class="new-column-button">+ Add column</button>
+    <button class="hide-new-column" type="button">&#10005;</button>
+   </form>
+  </div>
+  <button class="show-new-column">+ Add a column…</button>
  </div>
  {% empty %}
  <p><em>No boards created yet!</em></p>
@@ -118,6 +164,15 @@
    return cookies;
   }
   const cookies = parse_cookies();
+
+  document.querySelector('.show-new-column').onclick = e => {
+   document.querySelector('.new-column').classList.remove('no-display');
+   e.target.classList.add('no-display');
+  };
+  document.querySelector('.hide-new-column').onclick = e => {
+   document.querySelector('.show-new-column').classList.remove('no-display');
+   document.querySelector('.new-column').classList.add('no-display');
+  };
 
   for (button of document.getElementsByClassName('show-new-card')) {
    button.addEventListener('click', e => {
