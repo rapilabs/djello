@@ -116,10 +116,16 @@
  }
  .moving-card {
   cursor: -webkit-grabbing;
-  transform: rotate(1deg);
+  transform: rotate(3deg);
  }
  .column.dropme {
   background-color: var(--medium-dark-grey);
+ }
+ .drag-img-container {
+  position: absolute;
+  top: -1000px;
+  width: 270px;
+  color: var(--dark-grey);
  }
  </style>
 </head>
@@ -204,6 +210,13 @@
   for (card of document.getElementsByClassName('card')) {
    card.addEventListener('dragstart', e => {
     e.dataTransfer.setData('Text', e.currentTarget.dataset.cardId);
+    const ghostImg = e.target.cloneNode(true);
+    ghostImg.classList.add('moving-card');
+    const container = document.createElement('div');
+    container.classList.add('drag-img-container');
+    container.appendChild(ghostImg);
+    document.body.appendChild(container);
+    e.dataTransfer.setDragImage(container, 0, 0);
    });
   }
 
