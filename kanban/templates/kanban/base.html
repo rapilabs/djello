@@ -180,6 +180,10 @@
    button.addEventListener('click', e => {
     const newCard = document.querySelector('.new-card[data-column-id="' + e.currentTarget.dataset.columnId + '"]');
     newCard.classList.remove('no-display');
+    newCard.onblur = e2 => {
+     e2.currentTarget.classList.add('no-display');
+     e.target.classList.remove('no-display');
+    }
     e.currentTarget.classList.add('no-display');
     newCard.focus();
    });
