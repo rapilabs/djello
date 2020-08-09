@@ -8,6 +8,18 @@
  <title>djello</title>
  <script src="//bensmithett.github.io/dragster/lib/dragster.js"></script>
  <style>
+
+ :root {
+  --blue: #0079bf;
+  --light-blue: #3D99CE;
+  --green: #5aac44;
+
+  --light-grey: #E2E4E6;
+  --medium-grey: #8c8c8c;
+  --medium-dark-grey: #cccccc;
+  --dark-grey: #4d4d4d;
+ }
+
  .no-display {
   display: none !important;
  }
@@ -19,14 +31,14 @@
  body {
   font-family: 'helvetica neue', sans-serif;
   color: white;
-  background-color: rgb(0, 121, 191);
+  background-color: var(--blue);
  }
  .board {
   display: flex;
  }
  .column {
-  color: #4d4d4d;
-  background-color: #E2E4E6;
+  color: var(--dark-grey);
+  background-color: var(--light-grey);
   border-radius: 3px;
   padding: 10px;
   margin-right: 10px;
@@ -34,12 +46,12 @@
  .show-new-column {
   height: 40px; 
   padding: 10px 12px;
-  background-color: #3D99CE;
+  background-color: var(--light-blue);
   border: none;
   border-radius: 3px;
  }
  .hide-new-column {
-  color: #42526e;
+  color: var(--dark-grey);
   border: none;
   background: none;
   font-size: x-large;
@@ -55,13 +67,13 @@
   box-sizing: border-box;
   width: 100%;
   padding: 8px 12px;
-  border: 2px solid #0079bf;
+  border: 2px solid var(--blue);
   border-radius: 3px;
   color: #172b4d;
  }
  .new-column-button {
   color: white;
-  background-color: #5aac44;
+  background-color: var(--green);
   height: 32px;
   padding: 4px 12px;
   border: none;
@@ -86,7 +98,7 @@
   box-sizing: border-box;
  }
  .show-new-card {
-  color: #8c8c8c;
+  color: var(--medium-grey);
   font-size: 14px;
   background: none;
   border: none;
@@ -98,16 +110,16 @@
   padding: 4px;
  }
  .show-new-card:hover {
-  color: #4d4d4d;
-  background-color: #cdd2d4;
-  text-decoration: underline;
+  color: var(--dark-grey);
+  background-color: var(--light-grey);
+  filter: brightness(95%);
  }
  .moving-card {
   cursor: -webkit-grabbing;
   transform: rotate(1deg);
  }
  .column.dropme {
-  background-color: #a9a9a9;
+  background-color: var(--medium-dark-grey);
  }
  </style>
 </head>
