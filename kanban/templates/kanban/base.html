@@ -187,6 +187,7 @@
 
   document.querySelector('.show-new-column').onclick = e => {
    document.querySelector('.new-column').classList.remove('no-display');
+   document.querySelector('.new-column-name').focus();
    e.target.classList.add('no-display');
   };
   document.querySelector('.hide-new-column').onclick = e => {
